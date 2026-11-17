@@ -1,0 +1,563 @@
+<!DOCTYPE html><html lang="en" class="h-full"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — NovaWorks AI Project Manager CRM</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#172554',
+        'on-primary': '#FFFFFF',
+        'secondary': '#4F46E5',
+        'on-secondary': '#FFFFFF',
+        'accent': '#6366F1',
+        'on-accent': '#070707',
+        'success': '#16A34A',
+        'on-success': '#272727',
+        'warning': '#D97706',
+        'on-warning': '#2A2A2A',
+        'error': '#DC2626',
+        'on-error': '#FFFFFF',
+        'outline': '#E2E8F0',
+        'outline-variant': '#CBD5E1',
+        'light-surface': '#FFFFFF',
+        'light-on-surface': '#1E293B',
+        'light-surface-variant': '#F8FAFC',
+        'light-on-surface-variant': '#64748B',
+        'dark-surface': '#0F172A',
+        'dark-on-surface': '#F8FAFC',
+        'dark-surface-variant': '#1E293B',
+        'dark-on-surface-variant': '#94A3B8',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '10px',
+        'lg': '12px',
+        'xl': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '40px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '32px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '120ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Code+Pro:wght@500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface-variant text-light-on-surface font-body antialiased flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- Desktop App Shell Container -->
+  <div class="flex min-h-[1024px] w-full" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Persistent Left Sidebar -->
+    <aside class="w-64 bg-primary text-on-primary border-r border-slate-800 flex-shrink-0 flex flex-col justify-between z-20">
+      <div>
+        <!-- App Logo & Branding -->
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-800/80">
+          <div class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold shadow-sm">
+            <span class="material-symbols-outlined text-xl">deployed_code</span>
+          </div>
+          <div>
+            <span class="font-headline text-headline-sm text-white tracking-tight" data-design-text-token="headline-sm">NovaWorks</span>
+            <span class="block text-[10px] text-slate-400 font-medium uppercase tracking-wider">AI PM CRM</span>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="p-4 space-y-1.5" aria-label="Main Navigation">
+          <!-- Dashboard (Active) -->
+          <a href="/admin_dashboard/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium bg-secondary text-white shadow-sm transition-colors">
+            <span class="material-symbols-outlined text-xl">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+
+          <!-- Projects -->
+          <a href="/projects/Projects.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">folder</span>
+            <span>Projects</span>
+          </a>
+
+          <!-- Team Directory -->
+          <a href="/team_directory/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">groups</span>
+            <span>Team Directory</span>
+          </a>
+
+          <!-- My Tasks -->
+          <a href="/my_tasks_developer/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">task_alt</span>
+            <span>My Tasks</span>
+          </a>
+
+          <div class="pt-4 pb-1">
+            <div class="px-3.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">AI Studio</div>
+          </div>
+
+          <!-- Create from Transcript (Admin only badge) -->
+          <a href="/create_from_transcript/code.html" class="flex items-center justify-between px-3.5 py-2.5 rounded text-sm font-medium text-indigo-300 bg-indigo-950/40 border border-indigo-800/50 hover:bg-indigo-900/40 transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-xl text-indigo-400">auto_awesome</span>
+              <span>Create from Transcript</span>
+            </div>
+            <span class="px-1.5 py-0.5 text-[10px] uppercase font-bold rounded bg-indigo-500/30 text-indigo-200 border border-indigo-500/40">Admin</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Logout -->
+      <div class="p-4 border-t border-slate-800/80">
+        <a href="/login/Login.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-400 hover:text-rose-300 hover:bg-rose-950/20 transition-colors">
+          <span class="material-symbols-outlined text-xl">logout</span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area with Header -->
+    <div class="flex-1 flex flex-col min-w-0">
+
+      <!-- Top Navigation Bar -->
+      <header class="h-16 bg-light-surface border-b border-outline px-6 flex items-center justify-between sticky top-0 z-10">
+        <div class="flex items-center gap-4">
+          <h2 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+            Admin Dashboard
+          </h2>
+          <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-700 border border-outline">
+            Administrator Mode
+          </span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <!-- Visual Search Field -->
+          <div class="relative hidden md:block w-72">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-light-on-surface-variant text-lg">search</span>
+            <input type="text" readonly placeholder="Search projects, tasks, team..." class="w-full pl-9 pr-3.5 py-1.5 bg-light-surface-variant border border-outline rounded text-body-sm text-light-on-surface placeholder:text-light-on-surface-variant focus:outline-none cursor-default">
+          </div>
+
+          <!-- Notification Icon -->
+          <button type="button" class="relative p-2 text-light-on-surface-variant hover:text-light-on-surface hover:bg-light-surface-variant rounded border border-outline transition-colors" aria-label="View notifications">
+            <span class="material-symbols-outlined text-xl">notifications</span>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span>
+          </button>
+
+          <!-- User Profile -->
+          <div class="flex items-center gap-3 pl-2 border-l border-outline">
+            <div class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm shadow-sm">
+              AD
+            </div>
+            <div class="hidden sm:block text-left">
+              <div class="text-sm font-semibold text-light-on-surface leading-tight">Admin User</div>
+              <div class="text-xs text-light-on-surface-variant">Administrator</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Main Viewport -->
+      <main class="flex-1 p-6 lg:p-8 space-y-8 overflow-y-auto max-w-7xl w-full mx-auto">
+        
+        <!-- Welcome Section -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2">
+          <div>
+            <h1 class="font-headline text-headline-lg text-light-on-surface tracking-tight" data-design-text-token="headline-lg">
+              Good Morning, Admin
+            </h1>
+            <p class="text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+              Here&#39;s what&#39;s happening across your projects.
+            </p>
+          </div>
+
+          <!-- Quick Actions Bar -->
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="/create_from_transcript/code.html" class="inline-flex items-center gap-2 px-4 py-2.5 bg-secondary text-on-secondary rounded font-label text-label-md hover:bg-opacity-90 active:scale-[0.98] transition-all shadow-sm">
+              <span class="material-symbols-outlined text-lg">auto_awesome</span>
+              <span>Create from Transcript</span>
+            </a>
+            <a href="/projects/Projects.html" class="inline-flex items-center gap-2 px-3.5 py-2.5 bg-light-surface text-light-on-surface border border-outline rounded font-label text-label-md hover:bg-slate-50 transition-colors">
+              <span class="material-symbols-outlined text-lg">view_list</span>
+              <span>View All Projects</span>
+            </a>
+            <a href="/team_directory/code.html" class="inline-flex items-center gap-2 px-3.5 py-2.5 bg-light-surface text-light-on-surface border border-outline rounded font-label text-label-md hover:bg-slate-50 transition-colors">
+              <span class="material-symbols-outlined text-lg">group</span>
+              <span>View Team</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Statistics Cards Grid -->
+        <section aria-labelledby="stats-heading">
+          <h2 id="stats-heading" class="sr-only">Key Statistics</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <!-- Stat 1: Total Projects -->
+            <article class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-body-sm text-light-on-surface-variant font-medium" data-design-text-token="body-sm">Total Projects</span>
+                <div class="font-display text-display-lg text-light-on-surface tabular-nums mt-1" data-design-text-token="display-lg">3</div>
+                <div class="text-xs text-light-on-surface-variant mt-1 flex items-center gap-1">
+                  <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+                  Active Client Sprints
+                </div>
+              </div>
+              <div class="w-12 h-12 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                <span class="material-symbols-outlined text-2xl">folder_special</span>
+              </div>
+            </article>
+
+            <!-- Stat 2: Total Tasks -->
+            <article class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-body-sm text-light-on-surface-variant font-medium" data-design-text-token="body-sm">Total Tasks</span>
+                <div class="font-display text-display-lg text-light-on-surface tabular-nums mt-1" data-design-text-token="display-lg">12</div>
+                <div class="text-xs text-light-on-surface-variant mt-1 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-sm text-indigo-500">schedule</span>
+                  118 Total Est. Hours
+                </div>
+              </div>
+              <div class="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <span class="material-symbols-outlined text-2xl">check_circle</span>
+              </div>
+            </article>
+
+            <!-- Stat 3: Team Members -->
+            <article class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm flex items-center justify-between">
+              <div>
+                <span class="text-body-sm text-light-on-surface-variant font-medium" data-design-text-token="body-sm">Team Members</span>
+                <div class="font-display text-display-lg text-light-on-surface tabular-nums mt-1" data-design-text-token="display-lg">9</div>
+                <div class="text-xs text-light-on-surface-variant mt-1 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-sm text-slate-400">badge</span>
+                  3 PMs &amp; 6 Developers
+                </div>
+              </div>
+              <div class="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+                <span class="material-symbols-outlined text-2xl">groups</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Projects Overview Section -->
+        <section aria-labelledby="projects-overview-heading" class="space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 id="projects-overview-heading" class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+              Projects Overview
+            </h2>
+            <a href="/projects/Projects.html" class="text-body-sm font-medium text-secondary hover:underline inline-flex items-center gap-1">
+              <span>View all projects</span>
+              <span class="material-symbols-outlined text-base">arrow_forward</span>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Project Card 1: UrbanCart Website -->
+            <article class="bg-light-surface border border-outline rounded-lg p-6 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-start justify-between gap-3 mb-2">
+                  <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+                    UrbanCart Website
+                  </h3>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    4 Tasks
+                  </span>
+                </div>
+                <p class="text-body-sm text-light-on-surface-variant mb-5" data-design-text-token="body-sm">
+                  Client: <span class="font-medium text-light-on-surface">UrbanCart Clothing</span>
+                </p>
+
+                <div class="space-y-3 pt-4 border-t border-outline">
+                  <div class="flex items-center justify-between text-body-sm">
+                    <span class="text-light-on-surface-variant">Project Manager</span>
+                    <div class="flex items-center gap-2">
+                      <div class="w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-bold flex items-center justify-center">AK</div>
+                      <span class="font-medium text-light-on-surface">Ayesha Khan</span>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center justify-between text-body-sm">
+                    <span class="text-light-on-surface-variant">Deadline</span>
+                    <div class="flex items-center gap-1 text-light-on-surface font-medium tabular-nums">
+                      <span class="material-symbols-outlined text-sm text-light-on-surface-variant">event</span>
+                      October 20, 2026
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-outline">
+                <a href="/project_details/code.html#urbancart" class="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2 bg-light-surface-variant text-light-on-surface hover:bg-slate-200 border border-outline rounded font-label text-label-md transition-colors">
+                  <span data-design-text-token="label-md">View Project</span>
+                  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Project Card 2: QuickServe Mobile App -->
+            <article class="bg-light-surface border border-outline rounded-lg p-6 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-start justify-between gap-3 mb-2">
+                  <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+                    QuickServe Mobile App
+                  </h3>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    4 Tasks
+                  </span>
+                </div>
+                <p class="text-body-sm text-light-on-surface-variant mb-5" data-design-text-token="body-sm">
+                  Client: <span class="font-medium text-light-on-surface">QuickServe Services</span>
+                </p>
+
+                <div class="space-y-3 pt-4 border-t border-outline">
+                  <div class="flex items-center justify-between text-body-sm">
+                    <span class="text-light-on-surface-variant">Project Manager</span>
+                    <div class="flex items-center gap-2">
+                      <div class="w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-bold flex items-center justify-center">BA</div>
+                      <span class="font-medium text-light-on-surface">Bilal Ahmed</span>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center justify-between text-body-sm">
+                    <span class="text-light-on-surface-variant">Deadline</span>
+                    <div class="flex items-center gap-1 text-light-on-surface font-medium tabular-nums">
+                      <span class="material-symbols-outlined text-sm text-light-on-surface-variant">event</span>
+                      October 24, 2026
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-outline">
+                <a href="/project_details/code.html#quickserve" class="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2 bg-light-surface-variant text-light-on-surface hover:bg-slate-200 border border-outline rounded font-label text-label-md transition-colors">
+                  <span data-design-text-token="label-md">View Project</span>
+                  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
+            </article>
+
+            <!-- Project Card 3: HelpDeskPro AI Assistant -->
+            <article class="bg-light-surface border border-outline rounded-lg p-6 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-start justify-between gap-3 mb-2">
+                  <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+                    HelpDeskPro AI Assistant
+                  </h3>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200">
+                    4 Tasks
+                  </span>
+                </div>
+                <p class="text-body-sm text-light-on-surface-variant mb-5" data-design-text-token="body-sm">
+                  Client: <span class="font-medium text-light-on-surface">HelpDeskPro Solutions</span>
+                </p>
+
+                <div class="space-y-3 pt-4 border-t border-outline">
+                  <div class="flex items-center justify-between text-body-sm">
+                    <span class="text-light-on-surface-variant">Project Manager</span>
+                    <div class="flex items-center gap-2">
+                      <div class="w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-bold flex items-center justify-center">HM</div>
+                      <span class="font-medium text-light-on-surface">Hina Malik</span>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center justify-between text-body-sm">
+                    <span class="text-light-on-surface-variant">Deadline</span>
+                    <div class="flex items-center gap-1 text-light-on-surface font-medium tabular-nums">
+                      <span class="material-symbols-outlined text-sm text-light-on-surface-variant">event</span>
+                      October 22, 2026
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-outline">
+                <a href="/project_details/code.html#helpdesk" class="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2 bg-light-surface-variant text-light-on-surface hover:bg-slate-200 border border-outline rounded font-label text-label-md transition-colors">
+                  <span data-design-text-token="label-md">View Project</span>
+                  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Recent Tasks Table Section -->
+        <section aria-labelledby="recent-tasks-heading" class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 id="recent-tasks-heading" class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+                Recent Tasks
+              </h2>
+              <p class="text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+                Latest development tasks across all active software engagements.
+              </p>
+            </div>
+            <span class="text-xs text-light-on-surface-variant font-medium">Showing 6 of 12 tasks</span>
+          </div>
+
+          <div class="bg-light-surface border border-outline rounded-lg overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse min-w-[700px]">
+                <thead>
+                  <tr class="bg-light-surface-variant border-b border-outline">
+                    <th scope="col" class="py-3 px-4 font-label text-label-md text-light-on-surface-variant">Task Name</th>
+                    <th scope="col" class="py-3 px-4 font-label text-label-md text-light-on-surface-variant">Project</th>
+                    <th scope="col" class="py-3 px-4 font-label text-label-md text-light-on-surface-variant">Assigned Developer</th>
+                    <th scope="col" class="py-3 px-4 font-label text-label-md text-light-on-surface-variant">Deadline</th>
+                    <th scope="col" class="py-3 px-4 font-label text-label-md text-light-on-surface-variant text-right">Estimated Hours</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-outline text-body-md">
+                  <!-- Task 1 -->
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="py-3.5 px-4 font-medium text-light-on-surface">Product catalog UI</td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">UrbanCart Website</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center">AR</div>
+                        <span class="text-light-on-surface">Ali Raza</span>
+                      </div>
+                    </td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant tabular-nums">October 12, 2026</td>
+                    <td class="py-3.5 px-4 text-right font-semibold text-light-on-surface tabular-nums">12 hrs</td>
+                  </tr>
+
+                  <!-- Task 2 -->
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="py-3.5 px-4 font-medium text-light-on-surface">Login and profile screens</td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">QuickServe Mobile App</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-full bg-purple-100 text-purple-700 font-bold text-xs flex items-center justify-center">SN</div>
+                        <span class="text-light-on-surface">Sara Noor</span>
+                      </div>
+                    </td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant tabular-nums">October 12, 2026</td>
+                    <td class="py-3.5 px-4 text-right font-semibold text-light-on-surface tabular-nums">8 hrs</td>
+                  </tr>
+
+                  <!-- Task 3 -->
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="py-3.5 px-4 font-medium text-light-on-surface">FAQ document processing</td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">HelpDeskPro AI</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-bold text-xs flex items-center justify-center">MA</div>
+                        <span class="text-light-on-surface">Maryam Asif</span>
+                      </div>
+                    </td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant tabular-nums">October 13, 2026</td>
+                    <td class="py-3.5 px-4 text-right font-semibold text-light-on-surface tabular-nums">10 hrs</td>
+                  </tr>
+
+                  <!-- Task 4 -->
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="py-3.5 px-4 font-medium text-light-on-surface">Product and cart APIs</td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">UrbanCart Website</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center">HS</div>
+                        <span class="text-light-on-surface">Hamza Shah</span>
+                      </div>
+                    </td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant tabular-nums">October 14, 2026</td>
+                    <td class="py-3.5 px-4 text-right font-semibold text-light-on-surface tabular-nums">14 hrs</td>
+                  </tr>
+
+                  <!-- Task 5 -->
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="py-3.5 px-4 font-medium text-light-on-surface">Booking and account APIs</td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">QuickServe Mobile App</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center">HS</div>
+                        <span class="text-light-on-surface">Hamza Shah</span>
+                      </div>
+                    </td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant tabular-nums">October 16, 2026</td>
+                    <td class="py-3.5 px-4 text-right font-semibold text-light-on-surface tabular-nums">16 hrs</td>
+                  </tr>
+
+                  <!-- Task 6 -->
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="py-3.5 px-4 font-medium text-light-on-surface">Assistant answer generation</td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">HelpDeskPro AI</span>
+                    </td>
+                    <td class="py-3.5 px-4">
+                      <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center">ZA</div>
+                        <span class="text-light-on-surface">Zain Abbas</span>
+                      </div>
+                    </td>
+                    <td class="py-3.5 px-4 text-light-on-surface-variant tabular-nums">October 17, 2026</td>
+                    <td class="py-3.5 px-4 text-right font-semibold text-light-on-surface tabular-nums">14 hrs</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+
+
+</body></html>

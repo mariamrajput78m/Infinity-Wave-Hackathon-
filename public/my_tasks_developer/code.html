@@ -1,0 +1,438 @@
+<!DOCTYPE html><html lang="en" class="h-full"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tasks — NovaWorks AI Project Manager CRM</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#172554',
+        'on-primary': '#FFFFFF',
+        'secondary': '#4F46E5',
+        'on-secondary': '#FFFFFF',
+        'accent': '#6366F1',
+        'on-accent': '#070707',
+        'success': '#16A34A',
+        'on-success': '#272727',
+        'warning': '#D97706',
+        'on-warning': '#2A2A2A',
+        'error': '#DC2626',
+        'on-error': '#FFFFFF',
+        'outline': '#E2E8F0',
+        'outline-variant': '#CBD5E1',
+        'light-surface': '#FFFFFF',
+        'light-on-surface': '#1E293B',
+        'light-surface-variant': '#F8FAFC',
+        'light-on-surface-variant': '#64748B',
+        'dark-surface': '#0F172A',
+        'dark-on-surface': '#F8FAFC',
+        'dark-surface-variant': '#1E293B',
+        'dark-on-surface-variant': '#94A3B8',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '10px',
+        'lg': '12px',
+        'xl': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '40px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '32px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '120ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Code+Pro:wght@500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface-variant text-light-on-surface font-body antialiased flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- Desktop App Shell Container -->
+  <div class="flex min-h-[1024px] w-full" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Role-Adapted Sidebar for Developer Role:
+         - Admin Transcript tool hidden
+         - Role badge explicitly set to Developer -->
+    <aside class="w-64 bg-primary text-on-primary border-r border-slate-800 flex-shrink-0 flex flex-col justify-between z-20">
+      <div>
+        <!-- App Logo & Branding -->
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-800/80">
+          <div class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold shadow-sm">
+            <span class="material-symbols-outlined text-xl">deployed_code</span>
+          </div>
+          <div>
+            <span class="font-headline text-headline-sm text-white tracking-tight" data-design-text-token="headline-sm">NovaWorks</span>
+            <span class="block text-[10px] text-slate-400 font-medium uppercase tracking-wider">Developer Workspace</span>
+          </div>
+        </div>
+
+        <!-- Navigation Menu for Developer -->
+        <nav class="p-4 space-y-1.5" aria-label="Main Navigation">
+          <!-- My Tasks (Active Primary Destination for Dev) -->
+          <a href="/my_tasks_developer/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium bg-secondary text-white shadow-sm transition-colors">
+            <span class="material-symbols-outlined text-xl">task_alt</span>
+            <span>My Tasks</span>
+          </a>
+
+          <!-- Related Assigned Projects -->
+          <a href="/projects/Projects.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">folder</span>
+            <span>Assigned Projects</span>
+          </a>
+
+          <!-- Team Directory -->
+          <a href="/team_directory/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">groups</span>
+            <span>Team Directory</span>
+          </a>
+
+          <div class="pt-4 pb-1">
+            <div class="px-3.5 text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Access Scope</div>
+            <p class="px-3.5 pt-1 text-xs text-slate-400 leading-normal">
+              Developer role: Scoped strictly to your assigned tasks and direct project specifications.
+            </p>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Logout -->
+      <div class="p-4 border-t border-slate-800/80">
+        <a href="/login/Login.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-400 hover:text-rose-300 hover:bg-rose-950/20 transition-colors">
+          <span class="material-symbols-outlined text-xl">logout</span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area with Header -->
+    <div class="flex-1 flex flex-col min-w-0">
+
+      <!-- Top Navigation Bar -->
+      <header class="h-16 bg-light-surface border-b border-outline px-6 flex items-center justify-between sticky top-0 z-10">
+        <div class="flex items-center gap-4">
+          <h2 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+            My Tasks
+          </h2>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+            Developer: Ali Raza
+          </span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <!-- Visual Search Field -->
+          <div class="relative hidden md:block w-72">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-light-on-surface-variant text-lg">search</span>
+            <input type="text" readonly placeholder="Search your assigned tasks..." class="w-full pl-9 pr-3.5 py-1.5 bg-light-surface-variant border border-outline rounded text-body-sm text-light-on-surface placeholder:text-light-on-surface-variant focus:outline-none cursor-default">
+          </div>
+
+          <!-- Notification Icon -->
+          <button type="button" class="relative p-2 text-light-on-surface-variant hover:text-light-on-surface hover:bg-light-surface-variant rounded border border-outline transition-colors" aria-label="View notifications">
+            <span class="material-symbols-outlined text-xl">notifications</span>
+          </button>
+
+          <!-- User Profile: Ali Raza (Developer) -->
+          <div class="flex items-center gap-3 pl-2 border-l border-outline">
+            <div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+              AR
+            </div>
+            <div class="hidden sm:block text-left">
+              <div class="text-sm font-semibold text-light-on-surface leading-tight">Ali Raza</div>
+              <div class="text-xs text-light-on-surface-variant">Full-Stack Developer</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Developer Tasks Viewport -->
+      <main class="flex-1 p-6 lg:p-8 space-y-6 overflow-y-auto max-w-7xl w-full mx-auto">
+        
+        <!-- Header & Developer Switcher Bar -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-outline">
+          <div>
+            <h1 class="font-headline text-headline-lg text-light-on-surface tracking-tight" data-design-text-token="headline-lg">
+              My Tasks
+            </h1>
+            <p class="text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+              View and manage the tasks assigned to you.
+            </p>
+          </div>
+
+          <!-- Developer Persona Switcher (For Multi-Developer Evaluation) -->
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold text-light-on-surface-variant uppercase tracking-wider">View Developer:</span>
+            <div class="inline-flex rounded-lg bg-light-surface p-1 border border-outline">
+              <button type="button" id="btn-dev-ali" onclick="switchDeveloper(&#39;ali&#39;)" class="px-2.5 py-1 rounded text-xs font-semibold bg-primary text-on-primary shadow-sm">
+                Ali Raza (3)
+              </button>
+              <button type="button" id="btn-dev-sara" onclick="switchDeveloper(&#39;sara&#39;)" class="px-2.5 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface">
+                Sara Noor (2)
+              </button>
+              <button type="button" id="btn-dev-empty" onclick="switchDeveloper(&#39;empty&#39;)" class="px-2.5 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface">
+                Unassigned (Empty State)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric KPI Cards for Current Developer -->
+        <div id="dev-kpis" class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm">
+            <span class="text-xs font-medium text-light-on-surface-variant uppercase tracking-wider">Assigned Tasks</span>
+            <div id="kpi-task-count" class="font-display text-display-lg text-light-on-surface tabular-nums mt-1">3</div>
+            <p class="text-xs text-light-on-surface-variant mt-1">Sprint commitments</p>
+          </div>
+          <div class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm">
+            <span class="text-xs font-medium text-light-on-surface-variant uppercase tracking-wider">Total Est. Work</span>
+            <div id="kpi-hours-count" class="font-display text-display-lg text-secondary tabular-nums mt-1">26 hrs</div>
+            <p class="text-xs text-light-on-surface-variant mt-1">Estimated working duration</p>
+          </div>
+          <div class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm">
+            <span class="text-xs font-medium text-light-on-surface-variant uppercase tracking-wider">Next Deadline</span>
+            <div id="kpi-next-deadline" class="font-display text-display-lg text-light-on-surface tabular-nums mt-1">Oct 12</div>
+            <p class="text-xs text-light-on-surface-variant mt-1">Product catalog UI delivery</p>
+          </div>
+        </div>
+
+        <!-- PERSONA 1: ALI RAZA TASKS TABLE (Active by default) -->
+        <div id="panel-dev-ali" class="space-y-4">
+          <div class="bg-light-surface border border-outline rounded-lg overflow-hidden shadow-sm">
+            <div class="p-4 bg-light-surface-variant border-b border-outline flex items-center justify-between">
+              <span class="text-xs font-semibold uppercase tracking-wider text-light-on-surface-variant">
+                Tasks Assigned to Ali Raza (3 tasks)
+              </span>
+              <span class="text-xs text-secondary font-medium">UrbanCart Website Engagement</span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse min-w-[760px]">
+                <thead>
+                  <tr class="bg-slate-50 border-b border-outline">
+                    <th scope="col" class="py-3.5 px-4 font-label text-label-md text-light-on-surface-variant">Task Title</th>
+                    <th scope="col" class="py-3.5 px-4 font-label text-label-md text-light-on-surface-variant">Related Project</th>
+                    <th scope="col" class="py-3.5 px-4 font-label text-label-md text-light-on-surface-variant">Description</th>
+                    <th scope="col" class="py-3.5 px-4 font-label text-label-md text-light-on-surface-variant">Deadline</th>
+                    <th scope="col" class="py-3.5 px-4 font-label text-label-md text-light-on-surface-variant text-right">Est. Hours</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-outline text-body-md">
+                  <!-- Task 1 -->
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="py-4 px-4 font-semibold text-light-on-surface">Product catalog UI</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">UrbanCart Website</span>
+                    </td>
+                    <td class="py-4 px-4 text-light-on-surface-variant text-body-sm max-w-sm">
+                      Build modern catalog layout with infinite scroll, category filters, and responsive mobile drawers.
+                    </td>
+                    <td class="py-4 px-4 text-light-on-surface-variant tabular-nums whitespace-nowrap">
+                      October 12, 2026
+                    </td>
+                    <td class="py-4 px-4 text-right font-semibold text-light-on-surface tabular-nums whitespace-nowrap">
+                      12 hours
+                    </td>
+                  </tr>
+
+                  <!-- Task 2 -->
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="py-4 px-4 font-semibold text-light-on-surface">Demo cart UI</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">UrbanCart Website</span>
+                    </td>
+                    <td class="py-4 px-4 text-light-on-surface-variant text-body-sm max-w-sm">
+                      Interactive cart preview modal with dynamic total price computation and discount voucher trigger.
+                    </td>
+                    <td class="py-4 px-4 text-light-on-surface-variant tabular-nums whitespace-nowrap">
+                      October 15, 2026
+                    </td>
+                    <td class="py-4 px-4 text-right font-semibold text-light-on-surface tabular-nums whitespace-nowrap">
+                      8 hours
+                    </td>
+                  </tr>
+
+                  <!-- Task 3 -->
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="py-4 px-4 font-semibold text-light-on-surface">Website integration and testing</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">UrbanCart Website</span>
+                    </td>
+                    <td class="py-4 px-4 text-light-on-surface-variant text-body-sm max-w-sm">
+                      Validate end-to-end user checkout journey, cross-browser compatibility, and frontend performance.
+                    </td>
+                    <td class="py-4 px-4 text-light-on-surface-variant tabular-nums whitespace-nowrap">
+                      October 19, 2026
+                    </td>
+                    <td class="py-4 px-4 text-right font-semibold text-light-on-surface tabular-nums whitespace-nowrap">
+                      6 hours
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- PERSONA 2: SARA NOOR TASKS TABLE -->
+        <div id="panel-dev-sara" class="space-y-4 hidden">
+          <div class="bg-light-surface border border-outline rounded-lg overflow-hidden shadow-sm">
+            <div class="p-4 bg-light-surface-variant border-b border-outline flex items-center justify-between">
+              <span class="text-xs font-semibold uppercase tracking-wider text-light-on-surface-variant">
+                Tasks Assigned to Sara Noor (2 tasks)
+              </span>
+              <span class="text-xs text-secondary font-medium">QuickServe Mobile App Engagement</span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse min-w-[760px]">
+                <thead>
+                  <tr class="bg-slate-50 border-b border-outline">
+                    <th scope="col" class="py-3.5 px-4 font-label text-label-md text-light-on-surface-variant">Task Title</th>
+                    <th scope="col" class="py-3.5 px-4 font-label text-label-md text-light-on-surface-variant">Related Project</th>
+                    <th scope="col" class="py-3.5 px-4 font-label text-label-md text-light-on-surface-variant">Description</th>
+                    <th scope="col" class="py-3.5 px-4 font-label text-label-md text-light-on-surface-variant">Deadline</th>
+                    <th scope="col" class="py-3.5 px-4 font-label text-label-md text-light-on-surface-variant text-right">Est. Hours</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-outline text-body-md">
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="py-4 px-4 font-semibold text-light-on-surface">Login and profile screens</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">QuickServe Mobile App</span>
+                    </td>
+                    <td class="py-4 px-4 text-light-on-surface-variant text-body-sm max-w-sm">
+                      Design and program Flutter login, OTP verification, and user profile management screens.
+                    </td>
+                    <td class="py-4 px-4 text-light-on-surface-variant tabular-nums whitespace-nowrap">
+                      October 12, 2026
+                    </td>
+                    <td class="py-4 px-4 text-right font-semibold text-light-on-surface tabular-nums whitespace-nowrap">
+                      8 hours
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="py-4 px-4 font-semibold text-light-on-surface">Service booking screens</td>
+                    <td class="py-4 px-4">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">QuickServe Mobile App</span>
+                    </td>
+                    <td class="py-4 px-4 text-light-on-surface-variant text-body-sm max-w-sm">
+                      Create interactive calendar booking, service tier selector, and address picker views.
+                    </td>
+                    <td class="py-4 px-4 text-light-on-surface-variant tabular-nums whitespace-nowrap">
+                      October 17, 2026
+                    </td>
+                    <td class="py-4 px-4 text-right font-semibold text-light-on-surface tabular-nums whitespace-nowrap">
+                      12 hours
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- PERSONA 3: CLEAN EMPTY STATE (Required per specification) -->
+        <div id="panel-dev-empty" class="hidden">
+          <div class="bg-light-surface border border-outline rounded-xl p-12 text-center shadow-sm">
+            <div class="w-16 h-16 rounded-full bg-slate-100 text-light-on-surface-variant flex items-center justify-center mx-auto mb-4">
+              <span class="material-symbols-outlined text-3xl">task_alt</span>
+            </div>
+            <h3 class="font-headline text-headline-sm text-light-on-surface mb-2" data-design-text-token="headline-sm">
+              No Tasks Assigned
+            </h3>
+            <p class="text-body-md text-light-on-surface-variant max-w-md mx-auto mb-6" data-design-text-token="body-md">
+              You are all caught up! You have no open development tasks assigned to your queue at this moment.
+            </p>
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-light-surface-variant border border-outline rounded text-xs text-light-on-surface-variant">
+              <span class="material-symbols-outlined text-sm text-emerald-600">check_circle</span>
+              New tasks will automatically appear here once extracted from meeting transcripts.
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function switchDeveloper(role) {
+      document.getElementById('panel-dev-ali').classList.add('hidden');
+      document.getElementById('panel-dev-sara').classList.add('hidden');
+      document.getElementById('panel-dev-empty').classList.add('hidden');
+      
+      document.getElementById('btn-dev-ali').className = "px-2.5 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface";
+      document.getElementById('btn-dev-sara').className = "px-2.5 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface";
+      document.getElementById('btn-dev-empty').className = "px-2.5 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface";
+
+      if (role === 'ali') {
+        document.getElementById('panel-dev-ali').classList.remove('hidden');
+        document.getElementById('btn-dev-ali').className = "px-2.5 py-1 rounded text-xs font-semibold bg-primary text-on-primary shadow-sm";
+        document.getElementById('kpi-task-count').textContent = '3';
+        document.getElementById('kpi-hours-count').textContent = '26 hrs';
+        document.getElementById('kpi-next-deadline').textContent = 'Oct 12';
+        document.getElementById('dev-kpis').classList.remove('hidden');
+      } else if (role === 'sara') {
+        document.getElementById('panel-dev-sara').classList.remove('hidden');
+        document.getElementById('btn-dev-sara').className = "px-2.5 py-1 rounded text-xs font-semibold bg-primary text-on-primary shadow-sm";
+        document.getElementById('kpi-task-count').textContent = '2';
+        document.getElementById('kpi-hours-count').textContent = '20 hrs';
+        document.getElementById('kpi-next-deadline').textContent = 'Oct 12';
+        document.getElementById('dev-kpis').classList.remove('hidden');
+      } else if (role === 'empty') {
+        document.getElementById('panel-dev-empty').classList.remove('hidden');
+        document.getElementById('btn-dev-empty').className = "px-2.5 py-1 rounded text-xs font-semibold bg-primary text-on-primary shadow-sm";
+        document.getElementById('dev-kpis').classList.add('hidden');
+      }
+    }
+  </script>
+
+
+</body></html>

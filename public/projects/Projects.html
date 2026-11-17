@@ -1,0 +1,409 @@
+<!DOCTYPE html><html lang="en" class="h-full"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — NovaWorks AI Project Manager CRM</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#172554',
+        'on-primary': '#FFFFFF',
+        'secondary': '#4F46E5',
+        'on-secondary': '#FFFFFF',
+        'accent': '#6366F1',
+        'on-accent': '#070707',
+        'success': '#16A34A',
+        'on-success': '#272727',
+        'warning': '#D97706',
+        'on-warning': '#2A2A2A',
+        'error': '#DC2626',
+        'on-error': '#FFFFFF',
+        'outline': '#E2E8F0',
+        'outline-variant': '#CBD5E1',
+        'light-surface': '#FFFFFF',
+        'light-on-surface': '#1E293B',
+        'light-surface-variant': '#F8FAFC',
+        'light-on-surface-variant': '#64748B',
+        'dark-surface': '#0F172A',
+        'dark-on-surface': '#F8FAFC',
+        'dark-surface-variant': '#1E293B',
+        'dark-on-surface-variant': '#94A3B8',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '10px',
+        'lg': '12px',
+        'xl': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '40px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '32px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '120ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Code+Pro:wght@500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface-variant text-light-on-surface font-body antialiased flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- Desktop App Shell Container -->
+  <div class="flex min-h-[1024px] w-full" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Persistent Left Sidebar (Shared Shell Parity) -->
+    <aside class="w-64 bg-primary text-on-primary border-r border-slate-800 flex-shrink-0 flex flex-col justify-between z-20">
+      <div>
+        <!-- App Logo & Branding -->
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-800/80">
+          <div class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold shadow-sm">
+            <span class="material-symbols-outlined text-xl">deployed_code</span>
+          </div>
+          <div>
+            <span class="font-headline text-headline-sm text-white tracking-tight" data-design-text-token="headline-sm">NovaWorks</span>
+            <span class="block text-[10px] text-slate-400 font-medium uppercase tracking-wider">AI PM CRM</span>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="p-4 space-y-1.5" aria-label="Main Navigation">
+          <!-- Dashboard -->
+          <a href="/admin_dashboard/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+
+          <!-- Projects (Active) -->
+          <a href="/projects/Projects.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium bg-secondary text-white shadow-sm transition-colors">
+            <span class="material-symbols-outlined text-xl">folder</span>
+            <span>Projects</span>
+          </a>
+
+          <!-- Team Directory -->
+          <a href="/team_directory/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">groups</span>
+            <span>Team Directory</span>
+          </a>
+
+          <!-- My Tasks -->
+          <a href="/my_tasks_developer/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">task_alt</span>
+            <span>My Tasks</span>
+          </a>
+
+          <div class="pt-4 pb-1">
+            <div class="px-3.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">AI Studio</div>
+          </div>
+
+          <!-- Create from Transcript (Admin only badge) -->
+          <a href="/create_from_transcript/code.html" class="flex items-center justify-between px-3.5 py-2.5 rounded text-sm font-medium text-indigo-300 bg-indigo-950/40 border border-indigo-800/50 hover:bg-indigo-900/40 transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-xl text-indigo-400">auto_awesome</span>
+              <span>Create from Transcript</span>
+            </div>
+            <span class="px-1.5 py-0.5 text-[10px] uppercase font-bold rounded bg-indigo-500/30 text-indigo-200 border border-indigo-500/40">Admin</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Logout -->
+      <div class="p-4 border-t border-slate-800/80">
+        <a href="/login/Login.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-400 hover:text-rose-300 hover:bg-rose-950/20 transition-colors">
+          <span class="material-symbols-outlined text-xl">logout</span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area with Header -->
+    <div class="flex-1 flex flex-col min-w-0">
+
+      <!-- Top Navigation Bar -->
+      <header class="h-16 bg-light-surface border-b border-outline px-6 flex items-center justify-between sticky top-0 z-10">
+        <div class="flex items-center gap-4">
+          <h2 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+            Projects
+          </h2>
+          <span class="text-xs text-light-on-surface-variant font-medium">3 Active Projects</span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <!-- Visual Search Field -->
+          <div class="relative hidden md:block w-72">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-light-on-surface-variant text-lg">search</span>
+            <input type="text" readonly placeholder="Search projects, tasks, team..." class="w-full pl-9 pr-3.5 py-1.5 bg-light-surface-variant border border-outline rounded text-body-sm text-light-on-surface placeholder:text-light-on-surface-variant focus:outline-none cursor-default">
+          </div>
+
+          <!-- Notification Icon -->
+          <button type="button" class="relative p-2 text-light-on-surface-variant hover:text-light-on-surface hover:bg-light-surface-variant rounded border border-outline transition-colors" aria-label="View notifications">
+            <span class="material-symbols-outlined text-xl">notifications</span>
+          </button>
+
+          <!-- User Profile -->
+          <div class="flex items-center gap-3 pl-2 border-l border-outline">
+            <div class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm shadow-sm">
+              AD
+            </div>
+            <div class="hidden sm:block text-left">
+              <div class="text-sm font-semibold text-light-on-surface leading-tight">Admin User</div>
+              <div class="text-xs text-light-on-surface-variant">Administrator</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Projects Viewport -->
+      <main class="flex-1 p-6 lg:p-8 space-y-6 overflow-y-auto max-w-7xl w-full mx-auto">
+        
+        <!-- Header & Filter Bar -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-2 border-b border-outline">
+          <div>
+            <h1 class="font-headline text-headline-lg text-light-on-surface tracking-tight" data-design-text-token="headline-lg">
+              Projects
+            </h1>
+            <p class="text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+              Manage and organize all client projects.
+            </p>
+          </div>
+
+          <!-- Role Switcher indicator -->
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-medium text-light-on-surface-variant">Filter view:</span>
+            <div class="inline-flex rounded-md shadow-sm border border-outline bg-light-surface p-0.5">
+              <button type="button" class="px-3 py-1 rounded text-xs font-semibold bg-primary text-on-primary">All (Admin)</button>
+              <button type="button" class="px-3 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface">Ayesha Khan</button>
+              <button type="button" class="px-3 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface">Bilal Ahmed</button>
+              <button type="button" class="px-3 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface">Hina Malik</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search & PM Filter Controls -->
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+          <!-- Search input -->
+          <div class="sm:col-span-8 relative">
+            <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-light-on-surface-variant text-lg">search</span>
+            <input type="text" id="project-search-input" placeholder="Search projects by name, client, or keyword..." class="w-full pl-10 pr-4 py-2.5 bg-light-surface border border-outline rounded text-body-md text-light-on-surface placeholder:text-light-on-surface-variant focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+          </div>
+
+          <!-- Filter by Project Manager -->
+          <div class="sm:col-span-4 relative">
+            <select aria-label="Filter by project manager" class="w-full px-3.5 py-2.5 bg-light-surface border border-outline rounded text-body-md text-light-on-surface focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+              <option value="all">All Project Managers</option>
+              <option value="ayesha">Ayesha Khan (Web PM)</option>
+              <option value="bilal">Bilal Ahmed (Mobile PM)</option>
+              <option value="hina">Hina Malik (AI PM)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+          
+          <!-- Project 1: UrbanCart Website -->
+          <article class="bg-light-surface border border-outline rounded-lg p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div>
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <h2 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+                  UrbanCart Website
+                </h2>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  4 Assigned Tasks
+                </span>
+              </div>
+              <p class="text-xs font-medium text-secondary uppercase tracking-wider mb-3">Client: UrbanCart Clothing</p>
+              
+              <p class="text-body-sm text-light-on-surface-variant mb-6 line-clamp-3" data-design-text-token="body-sm">
+                Full e-commerce platform revamp featuring modern product catalog interfaces, reactive demo carts, high-throughput REST APIs, and automated integration testing.
+              </p>
+
+              <!-- Meta List -->
+              <div class="space-y-3 pt-4 border-t border-outline text-body-sm">
+                <div class="flex items-center justify-between">
+                  <span class="text-light-on-surface-variant">Project Manager</span>
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-bold flex items-center justify-center">AK</div>
+                    <span class="font-medium text-light-on-surface">Ayesha Khan</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-light-on-surface-variant">Delivery Deadline</span>
+                  <div class="flex items-center gap-1.5 text-light-on-surface font-medium tabular-nums">
+                    <span class="material-symbols-outlined text-sm text-light-on-surface-variant">calendar_today</span>
+                    October 20, 2026
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-light-on-surface-variant">Allocated Hours</span>
+                  <span class="font-semibold text-light-on-surface tabular-nums">40 Total Hours</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-outline">
+              <a href="/project_details/code.html#urbancart" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-on-primary hover:bg-opacity-90 rounded font-label text-label-md transition-all shadow-sm">
+                <span data-design-text-token="label-md">View Details</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2: QuickServe Mobile App -->
+          <article class="bg-light-surface border border-outline rounded-lg p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div>
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <h2 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+                  QuickServe Mobile App
+                </h2>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  4 Assigned Tasks
+                </span>
+              </div>
+              <p class="text-xs font-medium text-secondary uppercase tracking-wider mb-3">Client: QuickServe Services</p>
+              
+              <p class="text-body-sm text-light-on-surface-variant mb-6 line-clamp-3" data-design-text-token="body-sm">
+                Cross-platform Flutter mobile client for on-demand service reservations, unified user profile authentication, account sync endpoints, and end-to-end device testing.
+              </p>
+
+              <!-- Meta List -->
+              <div class="space-y-3 pt-4 border-t border-outline text-body-sm">
+                <div class="flex items-center justify-between">
+                  <span class="text-light-on-surface-variant">Project Manager</span>
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-bold flex items-center justify-center">BA</div>
+                    <span class="font-medium text-light-on-surface">Bilal Ahmed</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-light-on-surface-variant">Delivery Deadline</span>
+                  <div class="flex items-center gap-1.5 text-light-on-surface font-medium tabular-nums">
+                    <span class="material-symbols-outlined text-sm text-light-on-surface-variant">calendar_today</span>
+                    October 24, 2026
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-light-on-surface-variant">Allocated Hours</span>
+                  <span class="font-semibold text-light-on-surface tabular-nums">46 Total Hours</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-outline">
+              <a href="/project_details/code.html#quickserve" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-on-primary hover:bg-opacity-90 rounded font-label text-label-md transition-all shadow-sm">
+                <span data-design-text-token="label-md">View Details</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3: HelpDeskPro AI Assistant -->
+          <article class="bg-light-surface border border-outline rounded-lg p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div>
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <h2 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+                  HelpDeskPro AI Assistant
+                </h2>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200">
+                  4 Assigned Tasks
+                </span>
+              </div>
+              <p class="text-xs font-medium text-secondary uppercase tracking-wider mb-3">Client: HelpDeskPro Solutions</p>
+              
+              <p class="text-body-sm text-light-on-surface-variant mb-6 line-clamp-3" data-design-text-token="body-sm">
+                Next-generation conversational agent ingesting internal support knowledge bases, generating grounded responses with human fallback escalation, and rigorous benchmark evaluation.
+              </p>
+
+              <!-- Meta List -->
+              <div class="space-y-3 pt-4 border-t border-outline text-body-sm">
+                <div class="flex items-center justify-between">
+                  <span class="text-light-on-surface-variant">Project Manager</span>
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-bold flex items-center justify-center">HM</div>
+                    <span class="font-medium text-light-on-surface">Hina Malik</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-light-on-surface-variant">Delivery Deadline</span>
+                  <div class="flex items-center gap-1.5 text-light-on-surface font-medium tabular-nums">
+                    <span class="material-symbols-outlined text-sm text-light-on-surface-variant">calendar_today</span>
+                    October 22, 2026
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-light-on-surface-variant">Allocated Hours</span>
+                  <span class="font-semibold text-light-on-surface tabular-nums">38 Total Hours</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-outline">
+              <a href="/project_details/code.html#helpdesk" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-on-primary hover:bg-opacity-90 rounded font-label text-label-md transition-all shadow-sm">
+                <span data-design-text-token="label-md">View Details</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+
+
+</body></html>

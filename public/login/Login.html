@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="en" class="h-full"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — NovaWorks AI Project Manager CRM</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#172554',
+        'on-primary': '#FFFFFF',
+        'secondary': '#4F46E5',
+        'on-secondary': '#FFFFFF',
+        'accent': '#6366F1',
+        'on-accent': '#070707',
+        'success': '#16A34A',
+        'on-success': '#272727',
+        'warning': '#D97706',
+        'on-warning': '#2A2A2A',
+        'error': '#DC2626',
+        'on-error': '#FFFFFF',
+        'outline': '#E2E8F0',
+        'outline-variant': '#CBD5E1',
+        'light-surface': '#FFFFFF',
+        'light-on-surface': '#1E293B',
+        'light-surface-variant': '#F8FAFC',
+        'light-on-surface-variant': '#64748B',
+        'dark-surface': '#0F172A',
+        'dark-on-surface': '#F8FAFC',
+        'dark-surface-variant': '#1E293B',
+        'dark-on-surface-variant': '#94A3B8',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '10px',
+        'lg': '12px',
+        'xl': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '40px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '32px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '120ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface-variant text-light-on-surface font-body antialiased flex flex-col justify-between" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <div class="min-h-[1024px] grid grid-cols-1 lg:grid-cols-12 w-full" data-stitch-vh="min-h-[1024px]===min-h-screen">
+    <!-- Left Column: Split-Screen Form -->
+    <div class="lg:col-span-6 xl:col-span-5 flex flex-col justify-between p-8 sm:p-12 lg:p-16 bg-light-surface border-r border-outline">
+      
+      <!-- Brand Header -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center font-bold text-xl shadow-sm">
+          <span class="material-symbols-outlined text-2xl text-indigo-400">deployed_code</span>
+        </div>
+        <div>
+          <span class="font-headline text-headline-sm text-light-on-surface tracking-tight" data-design-text-token="headline-sm">NovaWorks</span>
+          <span class="block text-xs font-medium text-secondary">AI Project Manager CRM</span>
+        </div>
+      </div>
+
+      <!-- Main Form Container -->
+      <div class="w-full max-w-md mx-auto my-auto py-8">
+        <div class="mb-8">
+          <h1 class="font-headline text-display-lg-mobile sm:text-headline-lg text-light-on-surface mb-2 tracking-tight" data-design-text-token="headline-lg">
+            Welcome Back
+          </h1>
+          <p class="text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+            Sign in to manage your projects and team.
+          </p>
+        </div>
+
+        <form class="space-y-5" onsubmit="event.preventDefault(); window.location.href=&#39;/admin_dashboard/code.html&#39;;">
+          <!-- Email Field -->
+          <div class="space-y-1.5">
+            <label for="email" class="block font-label text-label-md text-light-on-surface" data-design-text-token="label-md">
+              Work Email
+            </label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-light-on-surface-variant text-lg">mail</span>
+              <input id="email" type="email" required value="admin@novaworks.com" class="w-full pl-11 pr-4 py-2.5 bg-light-surface border border-outline rounded text-body-md text-light-on-surface placeholder:text-light-on-surface-variant focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" placeholder="name@company.com">
+            </div>
+          </div>
+
+          <!-- Password Field with Show/Hide -->
+          <div class="space-y-1.5">
+            <label for="password" class="block font-label text-label-md text-light-on-surface" data-design-text-token="label-md">
+              Password
+            </label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-light-on-surface-variant text-lg">lock</span>
+              <input id="password" type="password" required value="••••••••••••" class="w-full pl-11 pr-11 py-2.5 bg-light-surface border border-outline rounded text-body-md text-light-on-surface placeholder:text-light-on-surface-variant focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" placeholder="Enter password">
+              <button type="button" id="toggle-pwd-btn" onclick="const pwd = document.getElementById(&#39;password&#39;); const icon = document.getElementById(&#39;toggle-pwd-icon&#39;); if (pwd.type === &#39;password&#39;) { pwd.type = &#39;text&#39;; icon.textContent = &#39;visibility_off&#39;; } else { pwd.type = &#39;password&#39;; icon.textContent = &#39;visibility&#39;; }" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-light-on-surface-variant hover:text-light-on-surface focus:outline-none p-1" aria-label="Toggle password visibility">
+                <span id="toggle-pwd-icon" class="material-symbols-outlined text-lg">visibility</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Remember Me Checkbox -->
+          <div class="flex items-center justify-between pt-1">
+            <label class="flex items-center gap-2 cursor-pointer select-none">
+              <input type="checkbox" checked class="w-4 h-4 rounded border-outline text-secondary focus:ring-secondary focus:ring-offset-0 transition-colors">
+              <span class="text-body-sm text-light-on-surface" data-design-text-token="body-sm">Remember me</span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 bg-primary text-on-primary rounded font-label text-label-lg hover:bg-opacity-95 active:scale-[0.99] transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2">
+            <span data-design-text-token="label-lg">Sign In</span>
+            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </button>
+        </form>
+
+        <!-- Role Quick Switcher Demo Hint -->
+        <div class="mt-8 pt-6 border-t border-outline">
+          <p class="text-xs font-semibold uppercase tracking-wider text-light-on-surface-variant mb-3">Role Experience Previews</p>
+          <div class="grid grid-cols-3 gap-2">
+            <a href="/admin_dashboard/code.html" class="px-2 py-2 bg-light-surface-variant hover:bg-slate-200 border border-outline rounded text-center text-xs font-medium text-light-on-surface transition-colors">
+              Admin
+            </a>
+            <a href="/projects/Projects.html" class="px-2 py-2 bg-light-surface-variant hover:bg-slate-200 border border-outline rounded text-center text-xs font-medium text-light-on-surface transition-colors">
+              PM Role
+            </a>
+            <a href="/my_tasks_developer/code.html" class="px-2 py-2 bg-light-surface-variant hover:bg-slate-200 border border-outline rounded text-center text-xs font-medium text-light-on-surface transition-colors">
+              Developer
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtle Company Branding Section -->
+      <footer class="pt-6 border-t border-outline flex items-center justify-between text-body-sm text-light-on-surface-variant">
+        <span>© 2026 NovaWorks Systems Inc.</span>
+        <span class="inline-flex items-center gap-1.5 text-xs text-light-on-surface-variant">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          AI Engine Online v2.4
+        </span>
+      </footer>
+    </div>
+
+    <!-- Right Column: Abstract Workspace Graphic & Value Showcase -->
+    <div class="hidden lg:flex lg:col-span-6 xl:col-span-7 bg-primary text-on-primary p-12 lg:p-16 flex-col justify-between relative overflow-hidden">
+      <!-- Ambient Lighting -->
+      <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-secondary opacity-20 blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-20 bottom-10 w-80 h-80 rounded-full bg-indigo-500 opacity-15 blur-3xl pointer-events-none"></div>
+
+      <!-- Top Tagline -->
+      <div class="relative z-10 flex items-center justify-between">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-xs font-medium text-indigo-300">
+          <span class="material-symbols-outlined text-sm">auto_awesome</span>
+          Meeting-to-CRM Neural Engine
+        </span>
+        <span class="text-xs text-slate-400">Enterprise Edition</span>
+      </div>
+
+      <!-- Center Graphic Container -->
+      <div class="relative z-10 my-auto py-8">
+        <div class="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-slate-900/60 p-3 max-w-xl mx-auto backdrop-blur-sm">
+          <img src="https://lh3.googleusercontent.com/aida/ALJJyrDHJt2XDhbDUDqlT_u5TuwofSGW_jw5eXtS0hlFoYtljqllCPzyslezBcZHhDveT1tgncfcqg-wla7dAI2mhCk2JpBetXhzbX_oljji06cFa5nTNojh0JVMOjOVIrDSUwFqMv4_GgjMQGmY4-VxIvlyuQS4glUc-SbMK1ZFckNOWJE7gArdC2bmxrHxrp2mJr8Kxi4yaNkl_yG3qtTEcsCTx9jsqTVVsKRcGtZYZ3xqYJMqHVKzouad" alt="NovaWorks AI Project Management abstract workspace visual" class="w-full h-80 object-cover rounded-xl shadow-inner">
+          
+          <!-- Floating Status Badge -->
+          <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-slate-900/90 border border-slate-700 backdrop-blur-md shadow-lg flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-indigo-600/30 text-indigo-400 border border-indigo-500/40 flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">psychology</span>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-white">Transcript to Sprint Ready</p>
+                <p class="text-xs text-slate-400">Extracts projects, managers, deadlines &amp; tasks</p>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              100% Automated
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center max-w-md mx-auto">
+          <h2 class="font-headline text-headline-sm text-white mb-2">Automate Engineering Project Orchestration</h2>
+          <p class="text-body-sm text-slate-400">
+            Paste meeting recordings, standup transcripts, or client kickoffs. NovaWorks instantly structures tasks with precise hourly estimates.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom Trust Metrics -->
+      <div class="relative z-10 grid grid-cols-3 gap-6 pt-6 border-t border-slate-800/80 text-center">
+        <div>
+          <div class="text-xl font-bold text-white tabular-nums">3x</div>
+          <div class="text-xs text-slate-400 mt-0.5">Faster Sprint Planning</div>
+        </div>
+        <div>
+          <div class="text-xl font-bold text-white tabular-nums">98%</div>
+          <div class="text-xs text-slate-400 mt-0.5">Developer Attribution</div>
+        </div>
+        <div>
+          <div class="text-xl font-bold text-white tabular-nums">Zero</div>
+          <div class="text-xs text-slate-400 mt-0.5">Manual Entry Friction</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</body></html>

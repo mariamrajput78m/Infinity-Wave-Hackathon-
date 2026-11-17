@@ -1,0 +1,579 @@
+<!DOCTYPE html><html lang="en" class="h-full"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Directory — NovaWorks AI Project Manager CRM</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#172554',
+        'on-primary': '#FFFFFF',
+        'secondary': '#4F46E5',
+        'on-secondary': '#FFFFFF',
+        'accent': '#6366F1',
+        'on-accent': '#070707',
+        'success': '#16A34A',
+        'on-success': '#272727',
+        'warning': '#D97706',
+        'on-warning': '#2A2A2A',
+        'error': '#DC2626',
+        'on-error': '#FFFFFF',
+        'outline': '#E2E8F0',
+        'outline-variant': '#CBD5E1',
+        'light-surface': '#FFFFFF',
+        'light-on-surface': '#1E293B',
+        'light-surface-variant': '#F8FAFC',
+        'light-on-surface-variant': '#64748B',
+        'dark-surface': '#0F172A',
+        'dark-on-surface': '#F8FAFC',
+        'dark-surface-variant': '#1E293B',
+        'dark-on-surface-variant': '#94A3B8',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '10px',
+        'lg': '12px',
+        'xl': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '40px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '32px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '120ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Code+Pro:wght@500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface-variant text-light-on-surface font-body antialiased flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- Desktop App Shell Container -->
+  <div class="flex min-h-[1024px] w-full" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Persistent Left Sidebar -->
+    <aside class="w-64 bg-primary text-on-primary border-r border-slate-800 flex-shrink-0 flex flex-col justify-between z-20">
+      <div>
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-800/80">
+          <div class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold shadow-sm">
+            <span class="material-symbols-outlined text-xl">deployed_code</span>
+          </div>
+          <div>
+            <span class="font-headline text-headline-sm text-white tracking-tight" data-design-text-token="headline-sm">NovaWorks</span>
+            <span class="block text-[10px] text-slate-400 font-medium uppercase tracking-wider">AI PM CRM</span>
+          </div>
+        </div>
+
+        <nav class="p-4 space-y-1.5" aria-label="Main Navigation">
+          <a href="/admin_dashboard/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="/projects/Projects.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">folder</span>
+            <span>Projects</span>
+          </a>
+
+          <!-- Team Directory (Active) -->
+          <a href="/team_directory/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium bg-secondary text-white shadow-sm transition-colors">
+            <span class="material-symbols-outlined text-xl">groups</span>
+            <span>Team Directory</span>
+          </a>
+
+          <a href="/my_tasks_developer/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">task_alt</span>
+            <span>My Tasks</span>
+          </a>
+
+          <div class="pt-4 pb-1">
+            <div class="px-3.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">AI Studio</div>
+          </div>
+
+          <a href="/create_from_transcript/code.html" class="flex items-center justify-between px-3.5 py-2.5 rounded text-sm font-medium text-indigo-300 bg-indigo-950/40 border border-indigo-800/50 hover:bg-indigo-900/40 transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-xl text-indigo-400">auto_awesome</span>
+              <span>Create from Transcript</span>
+            </div>
+            <span class="px-1.5 py-0.5 text-[10px] uppercase font-bold rounded bg-indigo-500/30 text-indigo-200 border border-indigo-500/40">Admin</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="p-4 border-t border-slate-800/80">
+        <a href="/login/Login.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-400 hover:text-rose-300 hover:bg-rose-950/20 transition-colors">
+          <span class="material-symbols-outlined text-xl">logout</span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col min-w-0">
+
+      <!-- Top Navigation Bar -->
+      <header class="h-16 bg-light-surface border-b border-outline px-6 flex items-center justify-between sticky top-0 z-10">
+        <div class="flex items-center gap-4">
+          <h2 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+            Team Directory
+          </h2>
+          <span class="text-xs text-light-on-surface-variant font-medium">9 Engineering Members</span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="relative hidden md:block w-72">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-light-on-surface-variant text-lg">search</span>
+            <input type="text" readonly placeholder="Search team members by skill..." class="w-full pl-9 pr-3.5 py-1.5 bg-light-surface-variant border border-outline rounded text-body-sm text-light-on-surface placeholder:text-light-on-surface-variant focus:outline-none cursor-default">
+          </div>
+
+          <button type="button" class="relative p-2 text-light-on-surface-variant hover:text-light-on-surface hover:bg-light-surface-variant rounded border border-outline transition-colors" aria-label="View notifications">
+            <span class="material-symbols-outlined text-xl">notifications</span>
+          </button>
+
+          <div class="flex items-center gap-3 pl-2 border-l border-outline">
+            <div class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm shadow-sm">
+              AD
+            </div>
+            <div class="hidden sm:block text-left">
+              <div class="text-sm font-semibold text-light-on-surface leading-tight">Admin User</div>
+              <div class="text-xs text-light-on-surface-variant">Administrator</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Team Content -->
+      <main class="flex-1 p-6 lg:p-8 space-y-8 overflow-y-auto max-w-7xl w-full mx-auto">
+        
+        <!-- Header -->
+        <div class="pb-2 border-b border-outline flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 class="font-headline text-headline-lg text-light-on-surface tracking-tight" data-design-text-token="headline-lg">
+              Our Team
+            </h1>
+            <p class="text-body-md text-light-on-surface-variant" data-design-text-token="body-md">
+              Meet the people behind our projects.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+              3 Project Managers
+            </span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+              6 Core Developers
+            </span>
+          </div>
+        </div>
+
+        <!-- SECTION 1: PROJECT MANAGERS -->
+        <section aria-labelledby="pm-section-heading" class="space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-xl">manage_accounts</span>
+            <h2 id="pm-section-heading" class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+              Project Managers
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- PM 1: Ayesha Khan -->
+            <article class="bg-light-surface border border-outline rounded-lg p-6 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-start gap-4 mb-4">
+                  <div class="w-14 h-14 rounded-full bg-primary text-on-primary font-bold text-lg flex items-center justify-center flex-shrink-0 shadow-sm border-2 border-indigo-200">
+                    AK
+                  </div>
+                  <div>
+                    <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Ayesha Khan</h3>
+                    <p class="text-xs font-semibold text-secondary">Web Project Manager</p>
+                    <span class="inline-flex items-center gap-1 text-[11px] text-light-on-surface-variant mt-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Leading UrbanCart
+                    </span>
+                  </div>
+                </div>
+
+                <div class="space-y-2 pt-3 border-t border-outline">
+                  <div>
+                    <span class="block text-xs font-semibold text-light-on-surface-variant uppercase tracking-wider mb-1">Specialization</span>
+                    <p class="text-body-sm text-light-on-surface font-medium">Enterprise Web Systems &amp; E-Commerce Deliverables</p>
+                  </div>
+
+                  <div class="pt-2">
+                    <span class="block text-xs font-semibold text-light-on-surface-variant uppercase tracking-wider mb-1.5">Core Competencies</span>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Agile Scrum</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Client Roadmaps</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">React Governance</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5 pt-4 border-t border-outline flex items-center justify-between text-xs text-light-on-surface-variant">
+                <span>Assigned Project:</span>
+                <span class="font-semibold text-light-on-surface">UrbanCart Website</span>
+              </div>
+            </article>
+
+            <!-- PM 2: Bilal Ahmed -->
+            <article class="bg-light-surface border border-outline rounded-lg p-6 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-start gap-4 mb-4">
+                  <div class="w-14 h-14 rounded-full bg-primary text-on-primary font-bold text-lg flex items-center justify-center flex-shrink-0 shadow-sm border-2 border-emerald-200">
+                    BA
+                  </div>
+                  <div>
+                    <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Bilal Ahmed</h3>
+                    <p class="text-xs font-semibold text-secondary">Mobile Project Manager</p>
+                    <span class="inline-flex items-center gap-1 text-[11px] text-light-on-surface-variant mt-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Leading QuickServe
+                    </span>
+                  </div>
+                </div>
+
+                <div class="space-y-2 pt-3 border-t border-outline">
+                  <div>
+                    <span class="block text-xs font-semibold text-light-on-surface-variant uppercase tracking-wider mb-1">Specialization</span>
+                    <p class="text-body-sm text-light-on-surface font-medium">iOS &amp; Android App Delivery &amp; Release Orchestration</p>
+                  </div>
+
+                  <div class="pt-2">
+                    <span class="block text-xs font-semibold text-light-on-surface-variant uppercase tracking-wider mb-1.5">Core Competencies</span>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Flutter Lifecycle</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">App Store Deploy</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">API Contracts</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5 pt-4 border-t border-outline flex items-center justify-between text-xs text-light-on-surface-variant">
+                <span>Assigned Project:</span>
+                <span class="font-semibold text-light-on-surface">QuickServe Mobile App</span>
+              </div>
+            </article>
+
+            <!-- PM 3: Hina Malik -->
+            <article class="bg-light-surface border border-outline rounded-lg p-6 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-start gap-4 mb-4">
+                  <div class="w-14 h-14 rounded-full bg-primary text-on-primary font-bold text-lg flex items-center justify-center flex-shrink-0 shadow-sm border-2 border-purple-200">
+                    HM
+                  </div>
+                  <div>
+                    <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Hina Malik</h3>
+                    <p class="text-xs font-semibold text-secondary">AI Project Manager</p>
+                    <span class="inline-flex items-center gap-1 text-[11px] text-light-on-surface-variant mt-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Leading HelpDeskPro
+                    </span>
+                  </div>
+                </div>
+
+                <div class="space-y-2 pt-3 border-t border-outline">
+                  <div>
+                    <span class="block text-xs font-semibold text-light-on-surface-variant uppercase tracking-wider mb-1">Specialization</span>
+                    <p class="text-body-sm text-light-on-surface font-medium">GenAI Solutions, LLM Pipeline Delivery &amp; Guardrails</p>
+                  </div>
+
+                  <div class="pt-2">
+                    <span class="block text-xs font-semibold text-light-on-surface-variant uppercase tracking-wider mb-1.5">Core Competencies</span>
+                    <div class="flex flex-wrap gap-1.5">
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">RAG Pipelines</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">LLM Evaluation</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">AI Safety</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5 pt-4 border-t border-outline flex items-center justify-between text-xs text-light-on-surface-variant">
+                <span>Assigned Project:</span>
+                <span class="font-semibold text-light-on-surface">HelpDeskPro AI</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- SECTION 2: DEVELOPMENT TEAM -->
+        <section aria-labelledby="dev-section-heading" class="space-y-4 pt-4">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-xl">code</span>
+            <h2 id="dev-section-heading" class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">
+              Development Team
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Dev 1: Ali Raza -->
+            <article class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-center gap-3.5 mb-3">
+                  <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-700 font-bold text-base flex items-center justify-center flex-shrink-0">
+                    AR
+                  </div>
+                  <div>
+                    <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Ali Raza</h3>
+                    <p class="text-xs font-semibold text-secondary">Full-Stack Developer</p>
+                  </div>
+                </div>
+
+                <div class="space-y-2 pt-2 border-t border-outline text-body-sm">
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium">Specialization:</span>
+                    <span class="text-light-on-surface block font-medium">React, Frontend Integration</span>
+                  </div>
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium block mb-1">Skills:</span>
+                    <div class="flex flex-wrap gap-1">
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">React</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Tailwind CSS</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">State Management</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-outline flex items-center justify-between text-xs">
+                <span class="text-light-on-surface-variant">Active Load:</span>
+                <span class="font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">3 Tasks (26 hrs)</span>
+              </div>
+            </article>
+
+            <!-- Dev 2: Hamza Shah -->
+            <article class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-center gap-3.5 mb-3">
+                  <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 font-bold text-base flex items-center justify-center flex-shrink-0">
+                    HS
+                  </div>
+                  <div>
+                    <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Hamza Shah</h3>
+                    <p class="text-xs font-semibold text-secondary">Full-Stack Developer</p>
+                  </div>
+                </div>
+
+                <div class="space-y-2 pt-2 border-t border-outline text-body-sm">
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium">Specialization:</span>
+                    <span class="text-light-on-surface block font-medium">Node.js, Databases, APIs</span>
+                  </div>
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium block mb-1">Skills:</span>
+                    <div class="flex flex-wrap gap-1">
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Node.js</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">PostgreSQL</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">REST Architecture</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-outline flex items-center justify-between text-xs">
+                <span class="text-light-on-surface-variant">Active Load:</span>
+                <span class="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">2 Tasks (30 hrs)</span>
+              </div>
+            </article>
+
+            <!-- Dev 3: Sara Noor -->
+            <article class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-center gap-3.5 mb-3">
+                  <div class="w-12 h-12 rounded-full bg-purple-100 text-purple-700 font-bold text-base flex items-center justify-center flex-shrink-0">
+                    SN
+                  </div>
+                  <div>
+                    <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Sara Noor</h3>
+                    <p class="text-xs font-semibold text-secondary">App Developer</p>
+                  </div>
+                </div>
+
+                <div class="space-y-2 pt-2 border-t border-outline text-body-sm">
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium">Specialization:</span>
+                    <span class="text-light-on-surface block font-medium">Flutter, Mobile UI</span>
+                  </div>
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium block mb-1">Skills:</span>
+                    <div class="flex flex-wrap gap-1">
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Flutter</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Dart</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Custom Painters</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-outline flex items-center justify-between text-xs">
+                <span class="text-light-on-surface-variant">Active Load:</span>
+                <span class="font-semibold text-purple-700 bg-purple-50 px-2 py-0.5 rounded">2 Tasks (20 hrs)</span>
+              </div>
+            </article>
+
+            <!-- Dev 4: Usman Tariq -->
+            <article class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-center gap-3.5 mb-3">
+                  <div class="w-12 h-12 rounded-full bg-cyan-100 text-cyan-700 font-bold text-base flex items-center justify-center flex-shrink-0">
+                    UT
+                  </div>
+                  <div>
+                    <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Usman Tariq</h3>
+                    <p class="text-xs font-semibold text-secondary">App Developer</p>
+                  </div>
+                </div>
+
+                <div class="space-y-2 pt-2 border-t border-outline text-body-sm">
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium">Specialization:</span>
+                    <span class="text-light-on-surface block font-medium">Flutter, Integration, Testing</span>
+                  </div>
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium block mb-1">Skills:</span>
+                    <div class="flex flex-wrap gap-1">
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Widget Tests</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">CI/CD Pipelines</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Device Profiling</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-outline flex items-center justify-between text-xs">
+                <span class="text-light-on-surface-variant">Active Load:</span>
+                <span class="font-semibold text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded">1 Task (10 hrs)</span>
+              </div>
+            </article>
+
+            <!-- Dev 5: Zain Abbas -->
+            <article class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-center gap-3.5 mb-3">
+                  <div class="w-12 h-12 rounded-full bg-indigo-100 text-indigo-700 font-bold text-base flex items-center justify-center flex-shrink-0">
+                    ZA
+                  </div>
+                  <div>
+                    <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Zain Abbas</h3>
+                    <p class="text-xs font-semibold text-secondary">AI Developer</p>
+                  </div>
+                </div>
+
+                <div class="space-y-2 pt-2 border-t border-outline text-body-sm">
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium">Specialization:</span>
+                    <span class="text-light-on-surface block font-medium">LLMs, Extraction, Prompts</span>
+                  </div>
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium block mb-1">Skills:</span>
+                    <div class="flex flex-wrap gap-1">
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Prompt Engineering</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">LangChain</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Model Fine-Tuning</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-outline flex items-center justify-between text-xs">
+                <span class="text-light-on-surface-variant">Active Load:</span>
+                <span class="font-semibold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">2 Tasks (20 hrs)</span>
+              </div>
+            </article>
+
+            <!-- Dev 6: Maryam Asif -->
+            <article class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
+              <div>
+                <div class="flex items-center gap-3.5 mb-3">
+                  <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-700 font-bold text-base flex items-center justify-center flex-shrink-0">
+                    MA
+                  </div>
+                  <div>
+                    <h3 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">Maryam Asif</h3>
+                    <p class="text-xs font-semibold text-secondary">AI Developer</p>
+                  </div>
+                </div>
+
+                <div class="space-y-2 pt-2 border-t border-outline text-body-sm">
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium">Specialization:</span>
+                    <span class="text-light-on-surface block font-medium">Retrieval, Document Processing</span>
+                  </div>
+                  <div>
+                    <span class="text-xs text-light-on-surface-variant font-medium block mb-1">Skills:</span>
+                    <div class="flex flex-wrap gap-1">
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Vector Databases</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">Embeddings</span>
+                      <span class="px-2 py-0.5 rounded text-xs bg-slate-100 text-slate-700 font-medium">OCR Extraction</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-outline flex items-center justify-between text-xs">
+                <span class="text-light-on-surface-variant">Active Load:</span>
+                <span class="font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">2 Tasks (18 hrs)</span>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+
+
+</body></html>

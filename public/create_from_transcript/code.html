@@ -1,0 +1,522 @@
+<!DOCTYPE html><html lang="en" class="h-full"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Projects from Meeting — NovaWorks AI Project Manager CRM</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#172554',
+        'on-primary': '#FFFFFF',
+        'secondary': '#4F46E5',
+
+        
+        'on-secondary': '#FFFFFF',
+        'accent': '#6366F1',
+        'on-accent': '#070707',
+        'success': '#16A34A',
+        'on-success': '#272727',
+        'warning': '#D97706',
+        'on-warning': '#2A2A2A',
+        'error': '#DC2626',
+        'on-error': '#FFFFFF',
+        'outline': '#E2E8F0',
+        'outline-variant': '#CBD5E1',
+        'light-surface': '#FFFFFF',
+        'light-on-surface': '#1E293B',
+        'light-surface-variant': '#F8FAFC',
+        'light-on-surface-variant': '#64748B',
+        'dark-surface': '#0F172A',
+        'dark-on-surface': '#F8FAFC',
+        'dark-surface-variant': '#1E293B',
+        'dark-on-surface-variant': '#94A3B8',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '8px',
+        'md': '10px',
+        'lg': '12px',
+        'xl': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '40px',
+        'page-margin': '32px',
+      },
+      fontFamily: {
+        'display': ['"Inter"', 'sans-serif'],
+        'headline': ['"Inter"', 'sans-serif'],
+        'body': ['"Inter"', 'sans-serif'],
+        'label': ['"Inter"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '32px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.04em', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '120ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.16, 1, 0.3, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Code+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="min-h-[1024px] bg-light-surface-variant text-light-on-surface font-body antialiased flex flex-col" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- Desktop App Shell Container -->
+  <div class="flex min-h-[1024px] w-full" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Persistent Left Sidebar -->
+    <aside class="w-64 bg-primary text-on-primary border-r border-slate-800 flex-shrink-0 flex flex-col justify-between z-20">
+      <div>
+        <div class="h-16 flex items-center gap-3 px-6 border-b border-slate-800/80">
+          <div class="w-8 h-8 rounded-lg bg-secondary text-on-secondary flex items-center justify-center font-bold shadow-sm">
+            <span class="material-symbols-outlined text-xl">deployed_code</span>
+          </div>
+          <div>
+            <span class="font-headline text-headline-sm text-white tracking-tight" data-design-text-token="headline-sm">NovaWorks</span>
+            <span class="block text-[10px] text-slate-400 font-medium uppercase tracking-wider">AI PM CRM</span>
+          </div>
+        </div>
+
+        <nav class="p-4 space-y-1.5" aria-label="Main Navigation">
+          <a href="/admin_dashboard/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="/projects/Projects.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">folder</span>
+            <span>Projects</span>
+          </a>
+
+          <a href="/team_directory/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">groups</span>
+            <span>Team Directory</span>
+          </a>
+
+          <a href="/my_tasks_developer/code.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/60 transition-colors">
+            <span class="material-symbols-outlined text-xl">task_alt</span>
+            <span>My Tasks</span>
+          </a>
+
+          <div class="pt-4 pb-1">
+            <div class="px-3.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">AI Studio</div>
+          </div>
+
+          <!-- Create from Transcript (Active & Prominent) -->
+          <a href="/create_from_transcript/code.html" class="flex items-center justify-between px-3.5 py-2.5 rounded text-sm font-semibold text-white bg-secondary shadow-sm transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-xl">auto_awesome</span>
+              <span>Create from Transcript</span>
+            </div>
+            <span class="px-1.5 py-0.5 text-[10px] uppercase font-bold rounded bg-white/20 text-white">Admin</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="p-4 border-t border-slate-800/80">
+        <a href="/login/Login.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded text-sm font-medium text-slate-400 hover:text-rose-300 hover:bg-rose-950/20 transition-colors">
+          <span class="material-symbols-outlined text-xl">logout</span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col min-w-0">
+
+      <!-- Top Navigation Bar -->
+      <header class="h-16 bg-light-surface border-b border-outline px-6 flex items-center justify-between sticky top-0 z-10">
+        <div class="flex items-center gap-3">
+          <h2 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+            AI Transcript Engine
+          </h2>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+            <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            GPT-4o / Claude 3.5 Extraction Active
+          </span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button type="button" class="relative p-2 text-light-on-surface-variant hover:text-light-on-surface hover:bg-light-surface-variant rounded border border-outline transition-colors" aria-label="View notifications">
+            <span class="material-symbols-outlined text-xl">notifications</span>
+          </button>
+
+          <div class="flex items-center gap-3 pl-2 border-l border-outline">
+            <div class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm shadow-sm">
+              AD
+            </div>
+            <div class="hidden sm:block text-left">
+              <div class="text-sm font-semibold text-light-on-surface leading-tight">Admin User</div>
+              <div class="text-xs text-light-on-surface-variant">Administrator</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Engine Viewport -->
+      <main class="flex-1 p-6 lg:p-8 space-y-8 overflow-y-auto max-w-7xl w-full mx-auto">
+        
+        <!-- Hero Header -->
+        <div class="bg-gradient-to-r from-primary via-slate-900 to-indigo-950 text-white rounded-xl p-6 lg:p-8 shadow-md relative overflow-hidden">
+          <div class="relative z-10 max-w-2xl">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-semibold mb-3">
+              <span class="material-symbols-outlined text-sm">psychology</span>
+              Autonomous Project Discovery
+            </div>
+            <h1 class="font-headline text-headline-lg font-bold text-white mb-2 tracking-tight" data-design-text-token="headline-lg">
+              Create Projects from Meeting
+            </h1>
+            <p class="text-body-md text-slate-300" data-design-text-token="body-md">
+              Turn your meeting discussions into organized projects and actionable tasks with AI. Automatically extracts clients, project managers, task allocations, deadlines, and working hour estimates.
+            </p>
+          </div>
+
+          <div class="absolute right-6 bottom-4 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 opacity-20 pointer-events-none">
+            <span class="material-symbols-outlined text-9xl text-indigo-300">smart_toy</span>
+          </div>
+        </div>
+
+        <!-- Interactive Demo State Controller (For Instant Review) -->
+        <div class="flex items-center justify-between bg-light-surface p-3 border border-outline rounded-lg">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold uppercase tracking-wider text-light-on-surface-variant">Interactive State Preview:</span>
+            <div class="inline-flex rounded-md bg-light-surface-variant p-0.5 border border-outline">
+              <button type="button" id="btn-state-input" onclick="setEngineState(&#39;input&#39;)" class="px-3 py-1 rounded text-xs font-semibold bg-primary text-on-primary shadow-sm">
+                1. Input State
+              </button>
+              <button type="button" id="btn-state-loading" onclick="setEngineState(&#39;loading&#39;)" class="px-3 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface">
+                2. Processing State
+              </button>
+              <button type="button" id="btn-state-success" onclick="setEngineState(&#39;success&#39;)" class="px-3 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface">
+                3. Success State
+              </button>
+              <button type="button" id="btn-state-error" onclick="setEngineState(&#39;error&#39;)" class="px-3 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface">
+                4. Validation Error State
+              </button>
+            </div>
+          </div>
+
+          <span class="text-xs text-light-on-surface-variant hidden sm:inline">Click buttons to preview all states or use the live form below</span>
+        </div>
+
+        <!-- STATE 1: TRANSCRIPT INPUT SECTION -->
+        <section id="state-input-panel" class="space-y-6">
+          <div class="bg-light-surface border border-outline rounded-xl p-6 lg:p-8 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-outline">
+              <div>
+                <h2 class="font-headline text-headline-sm text-light-on-surface" data-design-text-token="headline-sm">
+                  Transcript Input Section
+                </h2>
+                <p class="text-body-sm text-light-on-surface-variant" data-design-text-token="body-sm">
+                  Paste audio transcription, meeting notes, Zoom/Teams transcript, or client kickoff call log.
+                </p>
+              </div>
+
+              <!-- Top Helper Buttons -->
+              <div class="flex items-center gap-3">
+                <button type="button" id="sample-transcript-btn" onclick="loadSampleTranscript()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 rounded font-label text-label-md transition-colors">
+                  <span class="material-symbols-outlined text-base">description</span>
+                  <span>Insert Sample Transcript</span>
+                </button>
+                <button type="button" id="clear-transcript-btn" onclick="clearTranscript()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-light-surface text-light-on-surface-variant hover:text-rose-600 hover:bg-rose-50 border border-outline rounded font-label text-label-md transition-colors">
+                  <span class="material-symbols-outlined text-base">delete_sweep</span>
+                  <span>Clear Transcript</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Textarea Form Area -->
+            <div class="pt-6 space-y-4">
+              <div class="relative">
+                <textarea id="transcript-textarea" rows="9" placeholder="Paste your meeting transcript here... (e.g. &#39;Project kickoff meeting: We agreed on UrbanCart Website for client UrbanCart Clothing with Ayesha Khan as Project Manager...&#39;)" class="w-full p-4 bg-slate-50 border border-outline rounded-lg text-body-md font-mono text-light-on-surface placeholder:text-light-on-surface-variant focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary focus:bg-white transition-all resize-y leading-relaxed" oninput="updateCharCount()"></textarea>
+
+                <div class="flex items-center justify-between pt-2 px-1 text-xs text-light-on-surface-variant">
+                  <span class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm text-indigo-600">info</span>
+                    Supports plain text, timestamps, speaker tags, and multi-project discussions.
+                  </span>
+                  <span id="char-count-label" class="font-mono font-medium tabular-nums">0 characters</span>
+                </div>
+              </div>
+
+              <!-- Main Prominent Action Button -->
+              <div class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-outline">
+                <div class="flex items-center gap-2 text-xs text-light-on-surface-variant">
+                  <span class="material-symbols-outlined text-base text-emerald-600">verified</span>
+                  Automated entity extraction for projects, managers, tasks, hours &amp; deadlines
+                </div>
+
+                <button type="button" id="btn-generate-main" onclick="triggerProcessing()" class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-secondary text-on-secondary hover:bg-indigo-600 active:scale-[0.99] rounded-lg font-label text-label-lg transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2">
+                  <span class="material-symbols-outlined text-xl">auto_awesome</span>
+                  <span data-design-text-token="label-lg">Generate Projects &amp; Tasks</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STATE 2: PROCESSING STATE (Loading Animation) -->
+        <section id="state-loading-panel" class="hidden bg-light-surface border border-outline rounded-xl p-10 lg:p-12 shadow-sm text-center">
+          <div class="max-w-md mx-auto space-y-6">
+            <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
+              <div class="absolute inset-0 rounded-full border-4 border-indigo-100 border-t-secondary animate-spin"></div>
+              <div class="w-12 h-12 rounded-full bg-indigo-50 text-secondary flex items-center justify-center">
+                <span class="material-symbols-outlined text-2xl animate-pulse">auto_awesome</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-headline text-headline-md text-light-on-surface mb-2">Analyzing Meeting Transcript...</h3>
+              <p class="text-body-sm text-light-on-surface-variant">
+                Our AI model is parsing conversation threads and structuring sprint deliverables.
+              </p>
+            </div>
+
+            <!-- Real-time extraction checklist -->
+            <div class="space-y-3 bg-light-surface-variant p-4 rounded-lg border border-outline text-left text-body-sm">
+              <div class="flex items-center gap-3 text-light-on-surface">
+                <span class="material-symbols-outlined text-emerald-600 text-lg">check_circle</span>
+                <span>AI is analyzing the meeting context &amp; speech segments</span>
+              </div>
+              <div class="flex items-center gap-3 text-light-on-surface">
+                <span class="material-symbols-outlined text-emerald-600 text-lg">check_circle</span>
+                <span>Identifying distinct client projects &amp; scopes</span>
+              </div>
+              <div class="flex items-center gap-3 text-indigo-600 font-medium">
+                <span class="material-symbols-outlined text-indigo-600 text-lg animate-spin">sync</span>
+                <span>Assigning team members based on specialization...</span>
+              </div>
+              <div class="flex items-center gap-3 text-light-on-surface-variant">
+                <span class="material-symbols-outlined text-slate-300 text-lg">radio_button_unchecked</span>
+                <span>Extracting deadlines and estimated hours</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STATE 3: SUCCESS STATE -->
+        <section id="state-success-panel" class="hidden space-y-6">
+          <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 lg:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                <span class="material-symbols-outlined text-2xl">check</span>
+              </div>
+              <div>
+                <h3 class="font-headline text-headline-md text-emerald-950 font-bold mb-1">
+                  Projects Successfully Generated!
+                </h3>
+                <p class="text-body-md text-emerald-800">
+                  AI extracted <span class="font-bold">3 Client Projects</span> and <span class="font-bold">12 Actionable Tasks</span> totaling <span class="font-bold">118 estimated hours</span> with zero manual overhead.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <a href="/projects/Projects.html" class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-label text-label-md rounded-lg shadow-sm transition-all whitespace-nowrap">
+                <span>View Projects</span>
+                <span class="material-symbols-outlined text-base">arrow_forward</span>
+              </a>
+              <button type="button" onclick="setEngineState(&#39;input&#39;)" class="px-4 py-2.5 bg-white text-emerald-800 hover:bg-emerald-100 border border-emerald-300 font-label text-label-md rounded-lg transition-colors whitespace-nowrap">
+                Process Another
+              </button>
+            </div>
+          </div>
+
+          <!-- Generated Project Cards Preview -->
+          <div class="space-y-4">
+            <h4 class="font-headline text-headline-sm text-light-on-surface">Extracted Project Deliverables</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+              <!-- Card 1 -->
+              <div class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm">
+                <div class="flex items-start justify-between mb-2">
+                  <h5 class="font-semibold text-light-on-surface">UrbanCart Website</h5>
+                  <span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-700">4 Tasks</span>
+                </div>
+                <p class="text-xs text-light-on-surface-variant mb-4">Client: UrbanCart Clothing</p>
+                <div class="text-xs space-y-1.5 border-t border-outline pt-3">
+                  <div class="flex justify-between"><span>Manager:</span><span class="font-medium text-light-on-surface">Ayesha Khan</span></div>
+                  <div class="flex justify-between"><span>Deadline:</span><span class="font-medium text-light-on-surface">Oct 20, 2026</span></div>
+                  <div class="flex justify-between"><span>Est. Work:</span><span class="font-medium text-light-on-surface">40 Hours</span></div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm">
+                <div class="flex items-start justify-between mb-2">
+                  <h5 class="font-semibold text-light-on-surface">QuickServe Mobile App</h5>
+                  <span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-700">4 Tasks</span>
+                </div>
+                <p class="text-xs text-light-on-surface-variant mb-4">Client: QuickServe Services</p>
+                <div class="text-xs space-y-1.5 border-t border-outline pt-3">
+                  <div class="flex justify-between"><span>Manager:</span><span class="font-medium text-light-on-surface">Bilal Ahmed</span></div>
+                  <div class="flex justify-between"><span>Deadline:</span><span class="font-medium text-light-on-surface">Oct 24, 2026</span></div>
+                  <div class="flex justify-between"><span>Est. Work:</span><span class="font-medium text-light-on-surface">46 Hours</span></div>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="bg-light-surface border border-outline rounded-lg p-5 shadow-sm">
+                <div class="flex items-start justify-between mb-2">
+                  <h5 class="font-semibold text-light-on-surface">HelpDeskPro AI Assistant</h5>
+                  <span class="px-2 py-0.5 rounded text-xs font-semibold bg-purple-50 text-purple-700">4 Tasks</span>
+                </div>
+                <p class="text-xs text-light-on-surface-variant mb-4">Client: HelpDeskPro Solutions</p>
+                <div class="text-xs space-y-1.5 border-t border-outline pt-3">
+                  <div class="flex justify-between"><span>Manager:</span><span class="font-medium text-light-on-surface">Hina Malik</span></div>
+                  <div class="flex justify-between"><span>Deadline:</span><span class="font-medium text-light-on-surface">Oct 22, 2026</span></div>
+                  <div class="flex justify-between"><span>Est. Work:</span><span class="font-medium text-light-on-surface">38 Hours</span></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- STATE 4: ERROR / VALIDATION STATE -->
+        <section id="state-error-panel" class="hidden space-y-6">
+          <div class="bg-amber-50 border border-amber-300 rounded-xl p-6 lg:p-8 flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center flex-shrink-0">
+              <span class="material-symbols-outlined text-2xl">warning</span>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-headline text-headline-sm text-amber-950 font-bold">
+                Transcript Information Incomplete
+              </h3>
+              <p class="text-body-md text-amber-900">
+                The AI parser detected missing project parameters. Please review and clarify the highlighted missing details before proceeding:
+              </p>
+              <ul class="list-disc list-inside text-body-sm text-amber-900 space-y-1 font-medium pt-1">
+                <li><span class="font-semibold text-rose-800">Missing Project Manager:</span> Could not infer designated manager for discussion segment 3.</li>
+                <li><span class="font-semibold text-rose-800">Ambiguous Deadline:</span> Mention of &#34;sometime next week&#34; requires specific target dates.</li>
+                <li><span class="font-semibold text-rose-800">Unassigned Developer:</span> &#34;Assistant answer generation&#34; requires an assigned engineer (Zain Abbas recommended).</li>
+              </ul>
+              <div class="pt-3">
+                <button type="button" onclick="setEngineState(&#39;input&#39;)" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-label text-label-md rounded transition-colors">
+                  Return and Edit Transcript
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const sampleTranscriptText = `[00:00:15] Meeting Kickoff: Multi-Client Q4 Engineering Sprint
+Attendees: Admin, Ayesha Khan, Bilal Ahmed, Hina Malik
+
+Ayesha: For the UrbanCart Clothing contract ("UrbanCart Website"), I will be the Project Manager. The hard deadline is October 20, 2026. Ali Raza will build the Product Catalog UI in 12 hours due Oct 12, and the Demo Cart UI in 8 hours due Oct 15. Hamza Shah will build the product and cart APIs in 14 hours due Oct 14. Ali Raza will do final website integration and testing in 6 hours due Oct 19.
+
+Bilal: For QuickServe Services ("QuickServe Mobile App"), I am managing it. The deadline is October 24, 2026. Sara Noor will handle login and profile screens (8 hours, Oct 12) and service booking screens (12 hours, Oct 17). Hamza Shah takes booking and account APIs (16 hours, Oct 16), and Usman Tariq will do mobile integration and testing (10 hours, Oct 22).
+
+Hina: For HelpDeskPro Solutions ("HelpDeskPro AI Assistant"), I am the Project Manager. Deadline is October 22, 2026. Maryam Asif will work on FAQ document processing (10 hours, Oct 13) and assistant evaluation and testing (8 hours, Oct 21). Zain Abbas will build assistant answer generation (14 hours, Oct 17) and the human escalation flow (6 hours, Oct 18).
+
+Admin: Approved. Let's run this through NovaWorks AI to scaffold our CRM board immediately.`;
+
+    function updateCharCount() {
+      const textarea = document.getElementById('transcript-textarea');
+      const count = textarea.value.length;
+      document.getElementById('char-count-label').textContent = count + ' characters';
+    }
+
+    function loadSampleTranscript() {
+      const textarea = document.getElementById('transcript-textarea');
+      textarea.value = sampleTranscriptText;
+      updateCharCount();
+    }
+
+    function clearTranscript() {
+      const textarea = document.getElementById('transcript-textarea');
+      textarea.value = '';
+      updateCharCount();
+    }
+
+    function setEngineState(state) {
+      document.getElementById('state-input-panel').classList.add('hidden');
+      document.getElementById('state-loading-panel').classList.add('hidden');
+      document.getElementById('state-success-panel').classList.add('hidden');
+      document.getElementById('state-error-panel').classList.add('hidden');
+
+      const buttons = ['input', 'loading', 'success', 'error'];
+      buttons.forEach(btn => {
+        const el = document.getElementById('btn-state-' + btn);
+        if (el) {
+          el.className = "px-3 py-1 rounded text-xs font-medium text-light-on-surface-variant hover:text-light-on-surface";
+        }
+      });
+
+      const activeBtn = document.getElementById('btn-state-' + state);
+      if (activeBtn) {
+        activeBtn.className = "px-3 py-1 rounded text-xs font-semibold bg-primary text-on-primary shadow-sm";
+      }
+
+      if (state === 'input') {
+        document.getElementById('state-input-panel').classList.remove('hidden');
+      } else if (state === 'loading') {
+        document.getElementById('state-loading-panel').classList.remove('hidden');
+      } else if (state === 'success') {
+        document.getElementById('state-success-panel').classList.remove('hidden');
+      } else if (state === 'error') {
+        document.getElementById('state-error-panel').classList.remove('hidden');
+      }
+    }
+
+    function triggerProcessing() {
+      const textarea = document.getElementById('transcript-textarea');
+      if (!textarea.value.trim()) {
+        loadSampleTranscript();
+      }
+      setEngineState('loading');
+      setTimeout(() => {
+        setEngineState('success');
+      }, 1600);
+    }
+
+    // Default load sample transcript for immediate visual demonstration
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSampleTranscript();
+    });
+  </script>
+
+
+</body></html>
